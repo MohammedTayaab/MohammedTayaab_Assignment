@@ -1,0 +1,54 @@
+public class OrganizationScheduler {
+    
+    static class ConferenceRoom {
+        String id;
+        boolean hasZoom;
+    }
+    
+    static class Appointment {
+        String employeeId;
+        String date;
+        String time;
+        int duration;
+        ConferenceRoom room;
+
+        void print(){
+            System.out.println("Employee Id: " + employeeId + ", Date: " + date + ", Time: " + time + ", Duration: " + duration + ", Room Id: " + room.id + ", Has Zoom: " + room.hasZoom);
+        }
+    }
+    
+    static Appointment[] appointments = new Appointment[10]; 
+    static int count = 0; // Keep count of meetings
+    
+    public static void scheduleAppointment(String employeeId, String date, String time, int duration, ConferenceRoom room){
+        Appointment appointment = new Appointment();
+        appointment.employeeId = employeeId;
+        appointment.date = date;
+        appointment.time = time;
+        appointment.duration = duration;
+        appointment.room = room;
+        appointments[count] = appointment;
+        count++;
+    }
+
+    public static void getAppointments(String date) {
+        for (int i = 0; i < count; i++) {
+            if (appointments[i].date.equals(date)) {
+                appointments[i].print();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // create rooms
+        ConferenceRoom room1 = new ConferenceRoom();
+        room1.id = "Room1";
+        room1.hasZoom = true;
+
+        // book appointments
+        scheduleAppointment("emp1", "04/18/2022", "10:00", 2, room1);
+
+        // get appointments
+        getAppointments("04/18/2022");
+    }
+}

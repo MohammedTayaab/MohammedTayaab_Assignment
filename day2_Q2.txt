@@ -1,0 +1,11 @@
+public class WelcomeMessageGenerator {
+    public static void main(String[] args) {
+
+        String welcome = generateWelcomeMessage("Naveen");
+        System.out.println(welcome);
+    }
+  
+    static String generateWelcomeMessage(String name) {
+        return "Hello " + name + ", Welcome to Java Worlds";
+    }
+}

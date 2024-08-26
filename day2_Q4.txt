@@ -1,0 +1,18 @@
+public class NumberFormatter {
+    public static void main(String[] args) {
+
+        // Test the method with a number
+        String result = formatNumber(951);
+        System.out.println(result);  
+    }
+
+    static String formatNumber(int num) {
+        if(num < 100 || num > 999) {  
+            return "Invalid input! Please enter a three-digit number.";
+        }
+        int hundreds = num / 100;     
+        int tens = (num % 100) / 10;   
+        int ones = num % 10;          
+        return "(" + hundreds + " x 100) + (" + tens + " x 10) + " + ones;
+    }
+}
